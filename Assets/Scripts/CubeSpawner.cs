@@ -75,7 +75,6 @@ public class CubeSpawner : MonoBehaviour
             {
                 cubeObjects[dest++].SetActive(false);
                 if (dest == 100) dest = 0;
-                Debug.Log(dest);
             }
             //
             ////////////////////////////////////////////////
