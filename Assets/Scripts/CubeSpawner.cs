@@ -47,37 +47,43 @@ public class CubeSpawner : MonoBehaviour
             cubeObject.SetActive(false);
         }
         StartCoroutine(Timer());
+        StartCoroutine(KeySet());
         //
         ////////////////////////////////////////////////
 
     }
 
     // Update is called once per frame
-    void Update()
+
+    IEnumerator KeySet()
     {
         // 키를 누르면 생성 및 제거
-        if (Input.GetKey(KeyCode.Space))
+        while (true)
         {
-            ////////////////////////////////////////////////
-            //
-            cubeObjects[init++].SetActive(true);
-            if (init == 100) init = 0;
-            //
-            ////////////////////////////////////////////////
-
-        }
-        
-        if (Input.GetKey(KeyCode.Return))
-        {
-            ////////////////////////////////////////////////
-            //
-            if (dest != init)
+            yield return new WaitForSeconds(0.01f);
+            if (Input.GetKey(KeyCode.Space))
             {
-                cubeObjects[dest++].SetActive(false);
-                if (dest == 100) dest = 0;
+                ////////////////////////////////////////////////
+                //
+                cubeObjects[init++].SetActive(true);
+                if (init == 100) init = 0;
+                //
+                ////////////////////////////////////////////////
+
             }
-            //
-            ////////////////////////////////////////////////
+            
+            if (Input.GetKey(KeyCode.Return))
+            {
+                ////////////////////////////////////////////////
+                //
+                if (dest != init)
+                {
+                    cubeObjects[dest++].SetActive(false);
+                    if (dest == 100) dest = 0;
+                }
+                //
+                ////////////////////////////////////////////////
+            }
         }
     }
 
